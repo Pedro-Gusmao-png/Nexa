@@ -3,8 +3,12 @@
 // Edite apenas esta seção
 // =====================================
 
-// 📍 Link do Google Maps
-const MAP_URL = "https://maps.google.com/?q=Salão+de+Festas";
+// 📍 Coordenadas do local (mais profissional que endereço)
+const MAP_LAT = "-8.0476";
+const MAP_LNG = "-34.8770";
+
+// 🔗 Link universal (abre escolha de apps no celular)
+const MAP_URL = `geo:0,0?q=${MAP_LAT},${MAP_LNG}`;
 
 // 📱 WhatsApp (DDI + DDD + número, sem espaços)
 const WHATSAPP_NUMBER = "5581999999999";
@@ -28,7 +32,7 @@ window.addEventListener("load", () => {
 
 
 // =====================================
-// 📍 BOTÃO MAPA
+// 📍 BOTÃO MAPA (PROFISSIONAL)
 // =====================================
 
 const mapButton = document.getElementById("btnMapa");
@@ -36,7 +40,16 @@ const mapButton = document.getElementById("btnMapa");
 if (mapButton) {
   mapButton.onclick = (event) => {
     event.preventDefault();
-    window.open(MAP_URL, "_blank");
+
+    // 📱 Mobile → abre seletor de apps (Waze, Maps, etc.)
+    if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+      window.location.href = MAP_URL;
+    } 
+    // 💻 Desktop → abre Google Maps no navegador
+    else {
+      const desktopMap = `https://www.google.com/maps?q=${MAP_LAT},${MAP_LNG}`;
+      window.open(desktopMap, "_blank");
+    }
   };
 }
 

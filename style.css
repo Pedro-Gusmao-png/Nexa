@@ -8,14 +8,23 @@
 /* ===== VAR ===== */
 :root {
   --text: #ffffff;
-  --subtext: #bfbfbf;
-  --accent: #25D366;
+  --subtext: #a8a8a8;
+
+  /* 🔥 NOVO VERDE PREMIUM */
+  --accent: #1DB954;
+  --accent-dark: #169c46;
+
+  /* 🎯 APOIO VISUAL */
+  --bg-dark: #050505;
+  --bg-soft: #121212;
 }
 
 /* ===== BODY ===== */
 body {
   font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #1a1a1a, #050505 80%);
+
+  /* 🔥 FUNDO MAIS PREMIUM */
+  background: radial-gradient(circle at top, #1a1a2e, #050505 80%);
   color: var(--text);
 }
 
@@ -70,12 +79,8 @@ body {
 }
 
 @keyframes zoom {
-  0% {
-    transform: scale(1) translateY(0);
-  }
-  100% {
-    transform: scale(1.06) translateY(-4px);
-  }
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.06) translateY(-4px); }
 }
 
 /* ===== OVERLAY ===== */
@@ -84,7 +89,7 @@ body {
   inset: 0;
   background-image:
     linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.95)),
-    radial-gradient(circle at top, rgba(37,211,102,0.15), transparent 60%);
+    radial-gradient(circle at top, rgba(29,185,84,0.15), transparent 60%);
 }
 
 /* ===== CONTENT ===== */
@@ -101,7 +106,7 @@ body {
 
   display: inline-block;
 
-  background: linear-gradient(180deg, #ffffff, #cccccc);
+  background: linear-gradient(180deg, #ffffff, #bbbbbb);
   -webkit-background-clip: text;
   background-clip: text;
 
@@ -112,10 +117,12 @@ body {
 .event-name::after {
   content: "";
   display: block;
-  width: 50px;
+  width: 60px;
   height: 3px;
   margin: 14px auto;
   border-radius: 10px;
+
+  /* 🔥 MAIS VISÍVEL */
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
@@ -162,7 +169,7 @@ body {
   width: 50px;
   height: 2px;
   margin: 22px auto;
-  background: linear-gradient(90deg, transparent, #555, transparent);
+  background: linear-gradient(90deg, transparent, #444, transparent);
 }
 
 /* ===== ACTIONS ===== */
@@ -172,12 +179,11 @@ body {
   gap: 14px;
 }
 
-/* ===== BUTTON ===== */
+/* ===== BASE BUTTON ===== */
 .btn {
   padding: 16px;
   border-radius: 16px;
   text-decoration: none;
-  color: #fff;
 
   font-size: 0.95rem;
   font-weight: 500;
@@ -187,24 +193,45 @@ body {
   align-items: center;
   gap: 10px;
 
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== BOTÃO SECUNDÁRIO ===== */
+.btn-secondary {
+  color: #ccc;
+
   background: linear-gradient(145deg, #1c1c1c, #0d0d0d);
+
+  border: 1px solid rgba(255,255,255,0.05);
 
   box-shadow:
     0 10px 25px rgba(0,0,0,0.8),
     inset 0 1px 0 rgba(255,255,255,0.05);
+}
 
-  transition: all 0.25s ease;
+/* ===== BOTÃO PRINCIPAL ===== */
+.btn-primary {
+  color: #fff;
+  font-weight: 600;
 
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+
+  box-shadow: 0 15px 40px rgba(29,185,84,0.35);
 }
 
 /* ===== HOVER ===== */
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow:
-    0 15px 35px rgba(0,0,0,0.9),
-    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 20px 50px rgba(29,185,84,0.5);
+}
+
+.btn-secondary:hover {
+  background: #1a1a1a;
 }
 
 /* ===== CLICK ===== */
@@ -212,7 +239,7 @@ body {
   transform: scale(0.96);
 }
 
-/* ===== EFEITO LUZ (GERAL) ===== */
+/* ===== EFEITO LUZ ===== */
 .btn::after {
   content: "";
   position: absolute;
@@ -234,19 +261,4 @@ body {
 
 .btn:hover::after {
   left: 130%;
-}
-
-/* ===== WHATSAPP ===== */
-.btn.whatsapp {
-  background: linear-gradient(135deg, #25D366, #1ebe5d);
-  font-weight: 600;
-  box-shadow: 0 15px 40px rgba(37,211,102,0.4);
-
-  animation: pulse 2.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
 }
